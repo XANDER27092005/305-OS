@@ -153,14 +153,28 @@ fn my_entry_point(boot_info: &'static mut bootloader_api::BootInfo) -> ! {
     interrupts::init();
 
     //Let's experience getting string from keyboard and saving into a variable for use
-    print!("Enter string: ");
+    
+    
+    
+    // macro_rules! print{
+    //     ($($arg:tt)*) => {{
+    //         use core::fmt::Write;
+    //         write!($crate::FRAME_BUFFER_WRITE.lock(), "{}", format_args!($($arg)*)).unwrap();
+    //     }};
+    // }
+    
+    
+    /*print!("Enter string: ");
     let input = match input_str() {
         Some(value) => value,
         None => "".to_owned()
     };
     println!("\nString entered is '{}'", input);
 
-
+*/
+//CA2 Assignment
+let input = input_str!("Input your string: ");
+println!("\nString entered is '{}'", input);
     // invoke a breakpoint exception for test
     //x86_64::instructions::interrupts::int3();
 

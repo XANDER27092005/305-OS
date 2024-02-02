@@ -24,6 +24,51 @@ macro_rules! println {
     }};
 }
 
+//CA2 Assignment
+#[macro_export] 
+macro_rules! input_str {
+    ($($arg:tt)*) => {{
+        print!("{}", format_args!($($arg)*));
+        let user_input = match input_str() {
+            Some(value) => value,
+            None => "".to_owned(),
+        };
+        user_input
+    }};
+}
+/* 
+#[macro_export]
+//Macro with ? operator -- progress
+macro_rules! input_strr {
+    ($($arg:tt)*) => {{
+        print!("{}", format_args!($($arg)*));
+       let res = input_str().ok_or("".to_owned())?;
+       res 
+    }};
+}
+
+#[macro_export]
+//Macro with unwrap only
+macro_rules! input_strs {
+    ($($arg:tt)*) => {{
+        print!("{}", format_args!($($arg)*));
+       let res = input_str().unwrap();
+       res 
+    }};
+}
+
+#[macro_export]
+//Works but itis not complete
+macro_rules! input_strl {
+    ($($arg:tt)*) => {{
+        print!("{}", format_args!($($arg)*));
+        match input_str() {
+            Some(value) => value,
+            None => "".to_owned(),
+        }
+    }};
+}
+*/
 pub fn input_str() -> Option<String> {
     let mut input: String = "".to_string();
     let mut input_counter:u32 = 0; //keep a count so that backspaced induced pop is not allowed beyond the count
